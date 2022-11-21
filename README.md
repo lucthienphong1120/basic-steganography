@@ -1,4 +1,4 @@
-# basic-steganography-
+# basic-steganography
 Basic steganography using python by injecting extra bytes after image file
 
 ## Usage
