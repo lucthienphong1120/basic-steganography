@@ -24,33 +24,40 @@ def clear_secret(filename, file_extension):
 
 def help():
     print("""
-    Usage: python main.py <mode> <image> [<message>]
+Usage: python main.py <mode> <image> [<message>]
 
     mode: mode to use
-    -a: --append
-    -r: --retrieve
-    -c: --clear
+      -a: --append
+      -r: --retrieve
+      -c: --clear
     image: image file (png|jpg)
     message: secret message to hide (only on mode a)
     """)
 
 if __name__=="__main__":
-    request = sys.argv[1]
-    filename, file_extension = os.path.splitext(sys.argv[2])
+    try:
+        request = sys.argv[1]
+        filename, file_extension = os.path.splitext(sys.argv[2])
 
-    if request == "-a" or request == "--append":
-        append_secret(filename, file_extension, sys.argv[3])
-    elif request == "-r" or request == "--retrieve":
-        secret = retrieve_secret(filename, file_extension)
-        print(secret)
-    elif request == "-c" or request == "--clear":
-        clear_secret(filename, file_extension)
-    else:
-        print("[!] Incorrect mode selected!")
-        help()
-        sys.exit()
+        if not file_extension in file_end:
+            print("[!] Image file format not supported!")
+            sys.exit()
+            
+        if request == "-a" or request == "--append":
+            try:
+                message = sys.argv[3]
+                append_secret(filename, file_extension, message)
+            except IndexError:
+                print("[!] Message not found!")
+                help()
+        elif request == "-r" or request == "--retrieve":
+            secret = retrieve_secret(filename, file_extension)
+            print(secret)
+        elif request == "-c" or request == "--clear":
+            clear_secret(filename, file_extension)
+        else:
+            print("[!] Incorrect mode selected!")
+            sys.exit()
 
-    if not file_extension in file_end:
-        print("[!] Image file format not supported!")
+    except:
         help()
-        sys.exit()
