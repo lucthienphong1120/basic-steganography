@@ -22,4 +22,4 @@ Usage: python main.py <mode> <image> [<message>]
 
 ## More detail
 
-https://blog.crfnetwork.cyou/security/sec-knowledge/chen-byte-ma-hoa-tin-nhan-vao-hinh-anh-bang-python/
+https://blog.crfnetwork.com/security/sec-knowledge/chen-byte-ma-hoa-tin-nhan-vao-hinh-anh-bang-python/
